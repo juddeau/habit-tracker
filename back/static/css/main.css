@@ -1,0 +1,49 @@
+/* HEADER */
+header{
+    position: sticky;
+    top: 0;
+    padding: 3px;
+    z-index: 1000;
+    background: white;
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.header__img{
+    height: 64px;
+    width: 64px;
+}
+
+.footer_tg{
+    height: 30px;
+    width: 30px;
+}
+
+.footer_tg_sacha{
+    height: 30px;
+    width: 30px;
+}
+
+.footer-icon-label {
+  display: block;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.footer-icon{
+    display: block;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.footer-link {
+    display: inline-block; /* Или flex, если вы предпочитаете */
+    transform: translateX(-10px); /* Смещает влево */
+    text-decoration: none; /* Убирает подчеркивание у ссылки */
+}
+
+.footer-icon-label, .footer-icon {
+  display: block;
+  text-align: center;
+}
+

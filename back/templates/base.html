@@ -21,6 +21,7 @@
         <li class="nav-item"><a href="{{ url_for('about') }}" class="nav-link">О нас</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Курение</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Улучшение</a></li>
+        <li class="nav-item"><a href="{{ url_for('donat') }}" class="nav-link">Донат</a></li>
       </ul>
     </header>
         <h1>{% block body %}{% endblock %}</h1>
@@ -36,10 +37,19 @@
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-    </ul>
+    <li class="ms-3">
+        <a class="text-body-secondary footer-link" href="https://t.me/sejegw" target="_blank" rel="noopener noreferrer">
+            <img class="footer_tg" src="{{ url_for('static', filename='img/tg.png') }}" alt="tg">
+            <div class="footer-icon-label">Тимур</div>
+        </a>
+    </li>
+    <li class="ms-3">
+        <a class="text-body-secondary footer-link" href="https://t.me/juudeau" target="_blank" rel="noopener noreferrer">
+            <img class="footer_tg_sacha" src="{{ url_for('static', filename='img/tg_sacha.png') }}" alt="tg_sacha">
+            <div class="footer-icon">Александр</div>
+        </a>
+    </li>
+</ul>
   </footer>
 </body>
 </html>
