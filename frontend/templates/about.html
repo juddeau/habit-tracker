@@ -1,9 +1,24 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block title %}
-О нас
-{% endblock %}
+{% block title %}О нас{% endblock %}
 
 {% block body %}
-<h>О нас</h>
+    <h2>О нас</h2>
+    <p>Это проект по отслеживанию привычек, который помогает вам стать лучше.</p>
+    <p>Наша цель — помочь людям избавиться от вредных привычек и улучшить качество жизни.</p>
+
+    <div class="contacts">
+        <div class="contact-item">
+            <a class="text-body-secondary footer-link" href="https://t.me/sejegw" target="_blank" rel="noopener noreferrer">
+                <img class="footer_tg" src="{{ url_for('static', filename='img/tg.png') }}" alt="tg">
+                <span class="footer-icon-label">Тимур</span>
+            </a>
+        </div>
+        <div class="contact-item">
+            <a class="text-body-secondary footer-link" href="https://t.me/juudeau" target="_blank" rel="noopener noreferrer">
+                <img class="footer_tg_sacha" src="{{ url_for('static', filename='img/tg_sacha.png') }}" alt="tg_sacha">
+                <span class="footer-icon">Александр</span>
+            </a>
+        </div>
+    </div>
 {% endblock %}

@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+import os
 
-app = Flask(__name__)
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+TEMPLATES_DIR = os.path.join(BASE_DIR, "frontend", "templates")
+STATIC_DIR = os.path.join(BASE_DIR, "frontend", "static")
+app = Flask(__name__, template_folder=TEMPLATES_DIR, static_folder=STATIC_DIR)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///klient.db'
 db = SQLAlchemy(app)
 
@@ -32,6 +36,8 @@ def register():
 @app.route('/login')
 def login():
     return render_template("entrance.html")
+
+
 
 
 if __name__ == '__main__':

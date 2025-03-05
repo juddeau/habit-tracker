@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Курение{% endblock %}
+
+{% block body %}
+<h2>Отслеживание затяжек</h2>
+<p>Каждый день записывайте количество затяжек, чтобы отслеживать прогресс.</p>
+
+<!-- Форма для ввода данных -->
+<form id="smoking-form">
+    <label for="puffs">Количество затяжек:</label>
+    <input type="number" id="puffs" name="puffs" min="0" required>
+    <button type="submit">Сохранить</button>
+</form>
+
+<!-- График -->
+<h3>График затяжек</h3>
+<canvas id="smokingChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/smoking.js') }}"></script>
+
+{% endblock %}
