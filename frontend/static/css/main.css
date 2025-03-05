@@ -123,3 +123,10 @@ container, footer{
     background-color: #0056b3;
     border-color: #0056b3;
 }
+
+/* Выделенный текст */
+.highlight-text {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    color: #007bff;
+}
