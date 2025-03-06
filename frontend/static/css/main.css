@@ -1,5 +1,4 @@
-/*Шапка*/
-
+/* Шапка */
 header {
     position: sticky;
     top: 0;
@@ -8,8 +7,13 @@ header {
     background: white;
     -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
 
+/* Логотип */
 .header__img {
     height: 64px;
     width: 64px;
@@ -20,21 +24,73 @@ header {
     color: blue;
     padding: 10px 15px;
     border-radius: 8px;
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s, transform 0.2s ease-in-out;
 }
 
 .nav-link:hover {
     background-color: rgba(0, 0, 255, 0.1);
+    transform: scale(1.05);
 }
 
 .nav-link.active {
     background-color: blue;
     color: white;
     font-weight: bold;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Контейнер аватара */
+.user-avatar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+/* Стиль аватара */
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007bff;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+}
+
+/* Контейнер для гостя */
+.guest-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Кнопка "Войти" */
+.login-btn {
+    margin-top: 5px;
+    font-size: 14px;
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid #007bff;
+    color: #007bff;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.login-btn:hover {
+    background: #007bff;
+    color: white;
 }
 
 /* Футер */
-
 .footer_tg, .footer_tg_sacha {
     height: 30px;
     width: 30px;
@@ -65,14 +121,12 @@ container, footer {
 }
 
 /* Дерево */
-
 .derevo {
     height: 500px;
     width: 1000px;
 }
 
 /* Регистрация */
-
 .registration-container {
     width: 400px;
     margin: 50px auto;
@@ -84,7 +138,6 @@ container, footer {
 }
 
 /* Главный экран */
-
 .hero-section {
     display: flex;
     align-items: center;
@@ -120,10 +173,26 @@ container, footer {
     .hero-image {
         max-height: 300px;
     }
+
+    /* Перемещение аватара вниз */
+    .user-avatar-container {
+        position: relative;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .login-btn {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
 }
 
 /* Страница "Курение" */
-
 .smoking-container {
     max-width: 700px;
     margin: 50px auto;
@@ -147,188 +216,86 @@ container, footer {
     margin-bottom: 25px;
 }
 
-/* Форма */
-.smoking-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
+/* Поле ввода в "Курение" */
+.smoking-form .form-control {
     width: 100%;
-    text-align: left;
-}
-
-.form-label {
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.form-control {
-    padding: 15px; /* Увеличил высоту поля */
-    font-size: 20px; /* Увеличил шрифт */
-    border-radius: 8px;
-    border: 2px solid #007bff;
-    width: 100%;
-    max-width: 400px; /* Теперь поле ввода больше и удобнее */
-    text-align: center;
-}
-
-/* Кнопка */
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    width: 100%;
-    max-width: 250px;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-/* График */
-.smoking-chart-title {
-    margin-top: 25px;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.chart-container {
-    margin-top: 25px;
-    width: 100%;
-    max-width: 800px;
-    height: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Стили для страницы "О нас" */
-
-.about-container {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.about-title {
-    font-size: 32px;
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 20px;
-}
-
-.about-subtitle {
-    font-size: 20px;
-    font-style: italic;
-    color: #555;
-    margin-bottom: 30px;
-}
-
-.about-quotes {
-    margin: 20px 0;
-}
-
-.quote {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    background: #e3f2fd;
-    padding: 15px;
-    border-left: 5px solid #007bff;
-    border-radius: 5px;
-    margin: 10px 0;
-}
-
-/* Блоки миссии и преимуществ */
-.about-mission, .about-benefits, .about-tips, .about-join {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-}
-
-.mission-title, .benefits-title, .tips-title, .join-title {
-    font-size: 26px;
-    color: #007bff;
-    margin-bottom: 10px;
-}
-
-.mission-text, .join-text, .tips-text {
-    font-size: 18px;
-    color: #444;
-}
-
-.benefits-list {
-    text-align: left;
-    padding-left: 20px;
-    font-size: 18px;
-    color: #333;
-}
-
-.benefits-list li {
-    margin-bottom: 10px;
-}
-
-.tips-text {
-    font-size: 18px;
-    background: #e8f5e9;
+    max-width: 400px;
     padding: 12px;
-    border-left: 5px solid #4caf50;
-    border-radius: 5px;
-    margin: 10px 0;
-}
-
-/* Адаптация под мобильные устройства */
-@media (max-width: 768px) {
-    .about-container {
-        max-width: 95%;
-        padding: 20px;
-    }
-
-    .about-title {
-        font-size: 28px;
-    }
-
-    .quote, .tips-text {
-        font-size: 18px;
-        padding: 10px;
-    }
-
-    .mission-title, .benefits-title, .tips-title, .join-title {
-        font-size: 22px;
-    }
-
-    .mission-text, .join-text, .tips-text {
-        font-size: 16px;
-    }
-}
-
-/* Выравнивание кнопки на странице регистрации */
-.registration-form .btn-primary {
-    width: 100%; /* Делаем кнопку такой же ширины, как поля ввода */
-    max-width: 400px; /* Совпадает с max-width у .form-control */
-    padding: 15px; /* Делаем кнопку выше для удобства */
-    font-size: 20px; /* Увеличиваем шрифт для читабельности */
-    border-radius: 8px; /* Закругляем углы для эстетики */
+    font-size: 18px;
     text-align: center;
+    border-radius: 8px;
+}
+
+/* Кнопки "Зарегистрироваться" и "Войти" */
+.btn-primary, .btn-outline-secondary {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект свечения */
+.btn-primary:hover, .btn-outline-secondary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+}
+
+/* Анимация вспышки */
+.btn-primary::after, .btn-outline-secondary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+/* Вспышка при нажатии */
+.btn-primary:active::after, .btn-outline-secondary:active::after {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Анимация кнопок "Зарегистрироваться" и "Войти" на главной */
+.btn-primary, .btn-outline-secondary {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект свечения при наведении */
+.btn-primary:hover, .btn-outline-secondary:hover {
+    transform: scale(1.05); /* Легкое увеличение */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Свечение */
+}
+
+/* Анимация вспышки */
+.btn-primary::after, .btn-outline-secondary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+/* Эффект вспышки при нажатии */
+.btn-primary:active::after, .btn-outline-secondary:active::after {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    transition: 0s;
 }
 
 /* Анимация для кнопок переключения вкладок */
@@ -371,4 +338,96 @@ container, footer {
 .nav-link:hover::after {
     width: 100%;
     left: 0;
+}
+
+/* Стили для страницы "О нас" */
+.about-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.about-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.about-subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.quote {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background: #e3f2fd;
+    padding: 12px;
+    border-left: 4px solid #007bff;
+    border-radius: 5px;
+    margin: 8px 0;
+}
+
+.mission-title, .benefits-title, .tips-title, .join-title {
+    font-size: 22px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.mission-text, .join-text {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.benefits-list {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.benefits-list li {
+    margin-bottom: 8px;
+}
+
+.tips-text {
+    font-size: 16px;
+    background: #e8f5e9;
+    padding: 10px;
+    border-left: 4px solid #4caf50;
+    border-radius: 5px;
+    margin: 8px 0;
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .about-container {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    .about-title {
+        font-size: 24px;
+    }
+
+    .quote, .tips-text {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .mission-title, .benefits-title, .tips-title, .join-title {
+        font-size: 20px;
+    }
+
+    .mission-text, .join-text {
+        font-size: 14px;
+    }
 }
