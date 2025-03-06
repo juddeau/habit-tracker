@@ -1,16 +1,16 @@
 /*Шапка*/
 
-header{
+header {
     position: sticky;
     top: 0;
     padding: 3px;
     z-index: 1000;
     background: white;
     -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
 }
 
-.header__img{
+.header__img {
     height: 64px;
     width: 64px;
 }
@@ -33,28 +33,17 @@ header{
     font-weight: bold;
 }
 
-/*Футер*/
+/* Футер */
 
-.footer_tg{
+.footer_tg, .footer_tg_sacha {
     height: 30px;
     width: 30px;
 }
 
-.footer_tg_sacha{
-    height: 30px;
-    width: 30px;
-}
-
-.footer-icon-label {
-  display: block;
-  text-align: center;
-  font-size: 0.8em;
-}
-
-.footer-icon{
+.footer-icon-label, .footer-icon {
     display: block;
-  text-align: center;
-  font-size: 0.8em;
+    text-align: center;
+    font-size: 0.8em;
 }
 
 .footer-link {
@@ -63,32 +52,26 @@ header{
     text-decoration: none;
 }
 
-.footer-icon-label, .footer-icon {
-  display: block;
-  text-align: center;
-}
-
-body{
+body {
     margin: 0;
 }
-*,
-*:before,
-*:after{
+
+*, *:before, *:after {
     box-sizing: border-box;
 }
 
-container, footer{
+container, footer {
     padding: 20px;
 }
 
-/*Дерево*/
+/* Дерево */
 
-.derevo{
+.derevo {
     height: 500px;
     width: 1000px;
 }
 
-/*Регистрация*/
+/* Регистрация */
 
 .registration-container {
     width: 400px;
@@ -100,51 +83,13 @@ container, footer{
     font-family: 'Arial', sans-serif;
 }
 
-.registration-form .mb-3 {
-    margin-bottom: 20px;
-}
-
-.registration-form .form-label {
-    font-weight: bold;
-    color: #333;
-}
-
-.registration-form .form-control {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.registration-form .form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-}
-
-.registration-form .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: #fff;
-    padding: 12px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-}
-
-.registration-form .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
 /* Главный экран */
 
 .hero-section {
     display: flex;
-    align-items: center; /* Выравнивание текста и изображения */
+    align-items: center;
     justify-content: space-between;
-    gap: 20px; /* Отступ между текстом и изображением */
+    gap: 20px;
     padding: 40px 0;
 }
 
@@ -156,9 +101,9 @@ container, footer{
 .hero-image {
     flex: 1;
     max-width: 50%;
-    max-height: 400px; /* Ограничение по высоте */
-    object-fit: cover; /* Обрезка изображения без искажений */
-    border-radius: 10px; /* Закругление углов */
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 /* Для адаптации на маленьких экранах */
@@ -177,10 +122,10 @@ container, footer{
     }
 }
 
-/* Стили для страницы "Курение" */
+/* Страница "Курение" */
 
 .smoking-container {
-    max-width: 700px; /* Увеличенная ширина */
+    max-width: 700px;
     margin: 50px auto;
     padding: 30px;
     background-color: #f9f9f9;
@@ -224,11 +169,13 @@ container, footer{
 }
 
 .form-control {
-    padding: 12px;
-    font-size: 18px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 15px; /* Увеличил высоту поля */
+    font-size: 20px; /* Увеличил шрифт */
+    border-radius: 8px;
+    border: 2px solid #007bff;
     width: 100%;
+    max-width: 400px; /* Теперь поле ввода больше и удобнее */
+    text-align: center;
 }
 
 /* Кнопка */
@@ -242,6 +189,7 @@ container, footer{
     cursor: pointer;
     transition: background 0.3s ease;
     width: 100%;
+    max-width: 250px;
 }
 
 .btn-primary:hover {
@@ -258,8 +206,8 @@ container, footer{
 .chart-container {
     margin-top: 25px;
     width: 100%;
-    max-width: 800px; /* Расширенный размер */
-    height: 400px; /* Увеличенная высота */
+    max-width: 800px;
+    height: 400px;
     margin-left: auto;
     margin-right: auto;
     background: white;
@@ -267,33 +215,108 @@ container, footer{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Адаптивность */
+/* Стили для страницы "О нас" */
+
+.about-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.about-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.about-subtitle {
+    font-size: 20px;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.about-quotes {
+    margin: 20px 0;
+}
+
+.quote {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    background: #e3f2fd;
+    padding: 15px;
+    border-left: 5px solid #007bff;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* Блоки миссии и преимуществ */
+.about-mission, .about-benefits, .about-tips, .about-join {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.mission-title, .benefits-title, .tips-title, .join-title {
+    font-size: 26px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.mission-text, .join-text, .tips-text {
+    font-size: 18px;
+    color: #444;
+}
+
+.benefits-list {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.benefits-list li {
+    margin-bottom: 10px;
+}
+
+.tips-text {
+    font-size: 18px;
+    background: #e8f5e9;
+    padding: 12px;
+    border-left: 5px solid #4caf50;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* Адаптация под мобильные устройства */
 @media (max-width: 768px) {
-    .smoking-container {
+    .about-container {
         max-width: 95%;
         padding: 20px;
     }
 
-    .form-control {
-        font-size: 16px;
+    .about-title {
+        font-size: 28px;
     }
 
-    .btn-primary {
-        font-size: 16px;
+    .quote, .tips-text {
+        font-size: 18px;
         padding: 10px;
     }
 
-    .chart-container {
-        max-width: 100%;
-        height: 300px; /* Меньший размер на мобильных */
+    .mission-title, .benefits-title, .tips-title, .join-title {
+        font-size: 22px;
     }
-}
 
-/* Увеличение ширины поля ввода на странице "Курение" */
-.smoking-form .form-control {
-    width: 15%; /* Растягиваем поле ввода */
-    max-width: 300px; /* Ограничиваем максимальную ширину */
-    padding: 12px; /* Делаем поле выше */
-    font-size: 18px; /* Увеличиваем размер шрифта */
-    text-align: center; /* Центрируем текст */
+    .mission-text, .join-text, .tips-text {
+        font-size: 16px;
+    }
 }
