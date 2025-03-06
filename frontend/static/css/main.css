@@ -320,3 +320,55 @@ container, footer {
         font-size: 16px;
     }
 }
+
+/* Выравнивание кнопки на странице регистрации */
+.registration-form .btn-primary {
+    width: 100%; /* Делаем кнопку такой же ширины, как поля ввода */
+    max-width: 400px; /* Совпадает с max-width у .form-control */
+    padding: 15px; /* Делаем кнопку выше для удобства */
+    font-size: 20px; /* Увеличиваем шрифт для читабельности */
+    border-radius: 8px; /* Закругляем углы для эстетики */
+    text-align: center;
+}
+
+/* Анимация для кнопок переключения вкладок */
+.nav-link {
+    position: relative;
+    color: blue;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s, transform 0.2s ease-in-out;
+}
+
+/* Эффект при наведении */
+.nav-link:hover {
+    background-color: rgba(0, 0, 255, 0.1);
+    transform: scale(1.05); /* Легкое увеличение */
+}
+
+/* Анимация активной вкладки */
+.nav-link.active {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Подчеркивание при наведении */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: blue;
+    transition: width 0.3s ease, left 0.3s ease;
+    border-radius: 3px;
+}
+
+/* Расширение подчеркивания */
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
