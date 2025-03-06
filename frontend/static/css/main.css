@@ -15,6 +15,24 @@ header{
     width: 64px;
 }
 
+/* Стили для активной вкладки */
+.nav-link {
+    color: blue;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 0, 255, 0.1);
+}
+
+.nav-link.active {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
 
 /*Футер*/
 

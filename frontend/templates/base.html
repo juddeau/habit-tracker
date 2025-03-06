@@ -19,11 +19,21 @@
             </a>
 
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link active" aria-current="page">Главная</a></li>
-                <li class="nav-item"><a href="{{ url_for('about') }}" class="nav-link">О нас</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Курение</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Улучшение</a></li>
-                <li class="nav-item"><a href="{{ url_for('donat') }}" class="nav-link">Донат</a></li>
+                <li class="nav-item">
+                    <a href="{{ url_for('index') }}" class="nav-link {% if request.path == url_for('index') %}active{% endif %}" aria-current="page">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('about') }}" class="nav-link {% if request.path == url_for('about') %}active{% endif %}">О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('smoking') }}" class="nav-link {% if request.path == url_for('smoking') %}active{% endif %}">Курение</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('upgrade') }}" class="nav-link {% if request.path == url_for('upgrade') %}active{% endif %}">Улучшение</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('donat') }}" class="nav-link {% if request.path == url_for('donat') %}active{% endif %}">Донат</a>
+                </li>
             </ul>
         </header>
 

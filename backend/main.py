@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(300), nullable=False)
-    password= db.Column(db.Text, nullable=False)
+    password = db.Column(db.Text, nullable=False)
 
 
 @app.route('/')
@@ -28,7 +28,6 @@ def about():
 def donat():
     return render_template("donat.html")
 
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     return render_template("registration.html")
@@ -37,9 +36,15 @@ def register():
 def login():
     return render_template("entrance.html")
 
+# Добавленные маршруты
+@app.route('/smoking')
+def smoking():
+    return render_template("smoking.html")
 
+@app.route('/upgrade')
+def upgrade():
+    return render_template("UpGrade.html")
 
 
 if __name__ == '__main__':
-
     app.run(debug=True)
