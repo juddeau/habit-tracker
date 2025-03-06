@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}
+Вход
+{% endblock %}
+
+{% block body %}
+<div class="registration-container">
+    <form method="post" class="registration-form" id="loginForm">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя" required autocomplete="username">
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль" required autocomplete="current-password">
+        </div>
+        <div id="loginError" class="form-text text-danger">{{ login_error }}</div>
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+</div>
+{% endblock %}

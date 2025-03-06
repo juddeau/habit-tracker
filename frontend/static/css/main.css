@@ -33,9 +33,7 @@ header{
     font-weight: bold;
 }
 
-
 /*Футер*/
-
 
 .footer_tg{
     height: 30px;
@@ -90,9 +88,7 @@ container, footer{
     width: 1000px;
 }
 
-
 /*Регистрация*/
-
 
 .registration-container {
     width: 400px;
@@ -140,4 +136,164 @@ container, footer{
 .registration-form .btn-primary:hover {
     background-color: #0056b3;
     border-color: #0056b3;
+}
+
+/* Главный экран */
+
+.hero-section {
+    display: flex;
+    align-items: center; /* Выравнивание текста и изображения */
+    justify-content: space-between;
+    gap: 20px; /* Отступ между текстом и изображением */
+    padding: 40px 0;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 50%;
+}
+
+.hero-image {
+    flex: 1;
+    max-width: 50%;
+    max-height: 400px; /* Ограничение по высоте */
+    object-fit: cover; /* Обрезка изображения без искажений */
+    border-radius: 10px; /* Закругление углов */
+}
+
+/* Для адаптации на маленьких экранах */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text, .hero-image {
+        max-width: 100%;
+    }
+
+    .hero-image {
+        max-height: 300px;
+    }
+}
+
+/* Стили для страницы "Курение" */
+
+.smoking-container {
+    max-width: 700px; /* Увеличенная ширина */
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.smoking-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.smoking-text {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Форма */
+.smoking-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+/* Кнопка */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* График */
+.smoking-chart-title {
+    margin-top: 25px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.chart-container {
+    margin-top: 25px;
+    width: 100%;
+    max-width: 800px; /* Расширенный размер */
+    height: 400px; /* Увеличенная высота */
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .smoking-container {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .form-control {
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .chart-container {
+        max-width: 100%;
+        height: 300px; /* Меньший размер на мобильных */
+    }
+}
+
+/* Увеличение ширины поля ввода на странице "Курение" */
+.smoking-form .form-control {
+    width: 15%; /* Растягиваем поле ввода */
+    max-width: 300px; /* Ограничиваем максимальную ширину */
+    padding: 12px; /* Делаем поле выше */
+    font-size: 18px; /* Увеличиваем размер шрифта */
+    text-align: center; /* Центрируем текст */
 }

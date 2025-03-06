@@ -3,19 +3,25 @@
 {% block title %}Курение{% endblock %}
 
 {% block body %}
-<h2>Отслеживание затяжек</h2>
-<p>Каждый день записывайте количество затяжек, чтобы отслеживать прогресс.</p>
+<div class="smoking-container">
+    <h2 class="smoking-title">Отслеживание курения</h2>
+    <p class="smoking-text">Каждый день записывайте количество сигарет, чтобы отслеживать прогресс.</p>
 
-<!-- Форма для ввода данных -->
-<form id="smoking-form">
-    <label for="puffs">Количество затяжек:</label>
-    <input type="number" id="puffs" name="puffs" min="0" required>
-    <button type="submit">Сохранить</button>
-</form>
+    <!-- Форма для ввода данных -->
+    <form id="smoking-form" class="smoking-form">
+        <div class="input-group">
+            <label for="puffs" class="form-label">Количество сигарет:</label>
+            <input type="number" id="puffs" name="puffs" class="form-control" min="0" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
 
-<!-- График -->
-<h3>График затяжек</h3>
-<canvas id="smokingChart"></canvas>
+    <!-- График -->
+    <h3 class="smoking-chart-title">График курения</h3>
+    <div class="chart-container">
+        <canvas id="smokingChart"></canvas>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{{ url_for('static', filename='js/smoking.js') }}"></script>
