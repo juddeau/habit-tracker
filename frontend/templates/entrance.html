@@ -5,16 +5,19 @@
 {% endblock %}
 
 {% block body %}
-<div class="login-container">
-    <form method="post" class="login-form">
+<div class="login-container d-flex justify-content-center">
+    <form method="post" class="login-form p-4 shadow rounded" id="loginForm" style="width: 350px;">
         <div class="mb-3">
-            <input type="text" class="form-control" id="username" name="username" placeholder="Введите имя" required>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Введите имя" required autocomplete="username">
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль" required autocomplete="current-password">
+            <div id="loginError" class="form-text text-danger">{{ login_error }}</div>
         </div>
-        <button type="submit" class="btn btn-primary">Войти</button>
-        <a href="{{ url_for('register') }}" class="btn btn-secondary register-btn">Или зарегистрироваться</a>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Войти</button>
+            <a href="{{ url_for('register') }}" class="btn btn-outline-secondary">Или зарегистрироваться</a>
+        </div>
     </form>
 </div>
 {% endblock %}
