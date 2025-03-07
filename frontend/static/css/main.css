@@ -431,3 +431,95 @@ container, footer {
         font-size: 14px;
     }
 }
+
+.donate-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.donate-header {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.donate-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    opacity: 0;
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.donate-list {
+    list-style: none;
+    padding: 0;
+}
+
+.donate-list li {
+    margin: 10px 0;
+    font-size: 18px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-up {
+    opacity: 0;
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+.bounce:hover {
+    animation: bounce 0.6s ease-in-out;
+}
+
+
+/* Анимация появления контента при переключении вкладки */
+.page-transition {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
