@@ -652,4 +652,15 @@ container, footer {
     100% { box-shadow: 0 0 10px rgba(0, 123, 255, 0.4); }
 }
 
+/* --- Анимация для иконок Telegram (без свечения и бесконечного прыжка) --- */
+.telegram-icon {
+    width: 32px; /* Фиксированный размер */
+    height: auto;
+    transition: transform 0.2s ease-out;
+    display: inline-block;
+}
 
+/* Подпрыгивание только один раз при наведении */
+.telegram-icon:hover {
+    transform: translateY(-3px);
+}

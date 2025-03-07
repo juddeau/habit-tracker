@@ -9,6 +9,8 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <title>{% block title %}{% endblock %}</title>
+
+
 </head>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -80,13 +82,13 @@
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
             <li class="ms-3">
                 <a class="text-body-secondary footer-link" href="https://t.me/sejegw" target="_blank" rel="noopener noreferrer">
-                    <img class="footer_tg" src="{{ url_for('static', filename='img/tg.png') }}" alt="tg">
+                    <img class="telegram-icon" src="{{ url_for('static', filename='img/tg.png') }}" alt="tg">
                     <div class="footer-icon-label">Тимур</div>
                 </a>
             </li>
             <li class="ms-3">
                 <a class="text-body-secondary footer-link" href="https://t.me/juudeau" target="_blank" rel="noopener noreferrer">
-                    <img class="footer_tg_sacha" src="{{ url_for('static', filename='img/tg_sacha.png') }}" alt="tg_sacha">
+                    <img class="telegram-icon" src="{{ url_for('static', filename='img/tg_sacha.png') }}" alt="tg_sacha">
                     <div class="footer-icon">Александр</div>
                 </a>
             </li>
