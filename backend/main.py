@@ -26,7 +26,7 @@ def about():
 
 @app.route('/donat')
 def donat():
-    return render_template("donat.html")
+    return render_template("donate.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
