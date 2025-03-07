@@ -10,6 +10,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <title>{% block title %}{% endblock %}</title>
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const notification = document.createElement("div");
+        notification.classList.add("notification");
+        notification.innerHTML = "Тимусик, делай бек быстрее, сын матери! 🎉";
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.classList.add("hide");
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    });
+</script>
 <body>
     <div class="container">
         <header class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 border-bottom">
