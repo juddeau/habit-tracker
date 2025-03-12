@@ -32,7 +32,7 @@ def about():
 @app.route('/donat')
 def donat():
     return render_template("donat.html")
-
+#fghjkl
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     feck_zag = 0
