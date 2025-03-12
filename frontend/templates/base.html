@@ -5,40 +5,94 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <title>{% block title %}{% endblock %}</title>
+
+
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const notification = document.createElement("div");
+        notification.classList.add("notification");
+        notification.innerHTML = "Тимусик, делай бек быстрее, сын матери! 🎉";
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.classList.add("hide");
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    });
+</script>
 <body>
-    <div class="container"><header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/frontend/static" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-          <img class="header__img" src="{{ url_for('static', filename='img/trans_bg.png') }}" alt="trans_bg">
-        <span class="fs-4">Лучше, чем вчера</span>
-      </a>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 border-bottom">
+            <a href="{{ url_for('index') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img class="header__img" src="{{ url_for('static', filename='img/trans_bg.png') }}" alt="Логотип">
+                <span class="fs-4">Лучше, чем вчера</span>
+            </a>
 
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link active" aria-current="page">Главная</a></li>
-        <li class="nav-item"><a href="{{ url_for('about') }}" class="nav-link">О нас</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Курение</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Улучшение</a></li>
-        <li class="nav-item"><a href="{{ url_for('donat') }}" class="nav-link">Донат</a></li>
-      </ul>
-    </header>
-        <h1>{% block body %}{% endblock %}</h1>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a href="{{ url_for('index') }}" class="nav-link {% if request.path == url_for('index') %}active{% endif %}" aria-current="page">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('about') }}" class="nav-link {% if request.path == url_for('about') %}active{% endif %}">О нас</a>
+                </li>
+                {% if current_user and current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{{ url_for('smoking') }}" class="nav-link {% if request.path == url_for('smoking') %}active{% endif %}">Курение</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a href="{{ url_for('upgrade') }}" class="nav-link {% if request.path == url_for('upgrade') %}active{% endif %}">Улучшение</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('donat') }}" class="nav-link {% if request.path == url_for('donat') %}active{% endif %}">Донат</a>
+                </li>
+            </ul>
+
+            <!-- Аватар пользователя -->
+            <div class="user-avatar-container">
+                {% if current_user and current_user.is_authenticated %}
+                    <img src="{{ current_user.avatar_url or url_for('static', filename='img/default_avatar.png') }}" class="user-avatar" alt="Аватар">
+                {% else %}
+                    <div class="guest-avatar">
+                        <img src="{{ url_for('static', filename='img/default_avatar.png') }}" class="user-avatar" alt="Гость">
+                        <a href="{{ url_for('login') }}" class="btn btn-outline-primary login-btn">Войти</a>
+                    </div>
+                {% endif %}
+            </div>
+
+        </header>
+
+        <div class="page-transition">
+            <h1>{% block body %}{% endblock %}</h1>
+        </div>
     </div>
 
+    <!-- Футер с контактами -->
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="footer">
-      <a href="/frontend/static" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-        <svg class="bi" width="30" height="24"><use href="#bootstrap"></use></svg>
-          <img class="header__img" src="{{ url_for('static', filename='img/trans_bg.png') }}" alt="trans_bg">
-      </a>
-      <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Ваша помощь </span>
-    </div>
+        <div class="footer">
+            <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Ваша помощь</span>
+        </div>
 
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-
-</ul>
-  </footer>
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3">
+                <a class="text-body-secondary footer-link" href="https://t.me/sejegw" target="_blank" rel="noopener noreferrer">
+                    <img class="telegram-icon" src="{{ url_for('static', filename='img/tg.png') }}" alt="tg">
+                    <div class="footer-icon-label">Тимур</div>
+                </a>
+            </li>
+            <li class="ms-3">
+                <a class="text-body-secondary footer-link" href="https://t.me/juudeau" target="_blank" rel="noopener noreferrer">
+                    <img class="telegram-icon" src="{{ url_for('static', filename='img/tg_sacha.png') }}" alt="tg_sacha">
+                    <div class="footer-icon">Александр</div>
+                </a>
+            </li>
+        </ul>
+    </footer>
 </body>
 </html>

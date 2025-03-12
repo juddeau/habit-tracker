@@ -5,27 +5,25 @@
 {% endblock %}
 
 {% block body %}
-<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal text-body-emphasis">Спасибо</h1>
-      <p class="fs-5 text-body-secondary">Вот, что мы можем вам сказать - спасибо. Спасибо, что доверились и выбрали нас.
-          Единственная наша задача это помочь всем, кто этого хочет, но, чтобы сервис развивался
-          и нам нужна помощь - ваша помощь. </p>
+<div class="donate-container page-transition">
+    <div class="donate-header">
+        <h1 class="text-center fade-in">Спасибо за вашу поддержку! 💙</h1>
+        <p class="text-center slide-up">
+            Ваша помощь — это вклад в будущее! Вместе мы сможем сделать этот проект лучше и полезнее для всех.
+        </p>
     </div>
 
-<div class="card mb-4 rounded-3 shadow-sm">
-  <div class="card-header py-3">
-    <h4 class="my-0 fw-normal"></h4>
-  </div>
-  <div class="card-body text-center">  <!-- Добавлен text-center -->
-    <h1 class="card-title pricing-card-title">₽<small class="text-body-secondary fw-light"></small></h1>
-    <ul class="list-unstyled mt-3 mb-4">
-      <li>Уже собрано больше 20т</li>
-      <li>Вы тоже можете внести вклад</li>
-      <li>Помочь другим</li>
-      <li>Помочь всем</li>
-    </ul>
-    <button type="button" class="w-100 btn btn-lg btn-primary" id="myButton">Выбрать</button>
-  </div>
+    <div class="donate-card scale-in">
+        <h2 class="text-center">Как вы можете помочь?</h2>
+        <ul class="donate-list">
+            <li class="fade-in">Разовый донат</li>
+            <li class="fade-in">Подписка на поддержку</li>
+            <li class="fade-in">Рассказать друзьям</li>
+        </ul>
+        <p class="text-muted text-center fade-in">
+            Каждый вклад — это шаг к новым возможностям. Спасибо, что вы с нами!
+        </p>
+        <button type="button" class="btn btn-primary w-100 pulse">Поддержать проект</button>
+    </div>
 </div>
-
 {% endblock %}
