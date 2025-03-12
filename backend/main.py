@@ -29,9 +29,9 @@ def about():
     return render_template("about.html", user=session.get("user"))
 
 
-@app.route('/donat')
+@app.route('/donate')
 def donat():
-    return render_template("donat.html", user=session.get("user"))
+    return render_template("donate.html", user=session.get("user"))
 
 
 @app.route('/register', methods=['POST', 'GET'])

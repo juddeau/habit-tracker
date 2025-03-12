@@ -1,60 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("smoking-form");
-    const cigarettesInput = document.getElementById("cigarettes");
-    const ctx = document.getElementById("smokingChart").getContext("2d");
-
-    let chartData = {
-        labels: [],
-        datasets: [{
-            label: 'Количество сигарет',
-            data: [],
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 2,
-            tension: 0.3
-        }]
-    };
-
-    let smokingChart = new Chart(ctx, {
-        type: 'line',
-        data: chartData,
-        options: {
-            responsive: true,
-            maintainAspectRatio: true, // Теперь график не сжимается
-            aspectRatio: 2, // Соотношение ширины к высоте
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    suggestedMax: 20
-                }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        font: {
-                            size: 14
-                        }
-                    }
-                }
-            }
-        }
-    });
+    const input = document.getElementById("puffs");
+    const progressFill = document.getElementById("progressFill");
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
-        const cigarettes = parseInt(cigarettesInput.value);
 
-        if (!isNaN(cigarettes) && cigarettes >= 0) {
-            const today = new Date().toLocaleDateString();
-            chartData.labels.push(today);
-            chartData.datasets[0].data.push(cigarettes);
+        let value = parseInt(input.value);
+        if (isNaN(value) || value < 0) {
+            alert("Введите корректное число сигарет.");
+            return;
+        }
 
-            let maxCigarettes = Math.max(...chartData.datasets[0].data);
-            smokingChart.options.scales.y.suggestedMax = maxCigarettes + 5;
+        // Обновляем прогресс
+        let progress = Math.max(0, 100 - value * 2); // Пример: чем меньше сигарет, тем выше процент
+        progressFill.style.width = progress + "%";
+        progressFill.textContent = progress + "%";
 
-            smokingChart.update();
-            cigarettesInput.value = "";
+        alert("Данные сохранены! Продолжайте снижать курение.");
+    });
+
+    // График курения
+    const ctx = document.getElementById("smokingChart").getContext("2d");
+    new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+            datasets: [{
+                label: "Количество сигарет",
+                data: [10, 9, 8, 7, 6, 5, 4], // Пример данных
+                borderColor: "#2E8B57",
+                backgroundColor: "rgba(46, 139, 87, 0.2)",
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
     });
 });
