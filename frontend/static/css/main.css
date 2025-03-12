@@ -664,3 +664,32 @@ container, footer {
 .telegram-icon:hover {
     transform: translateY(-3px);
 }
+
+.password-tooltip {
+    display: none;
+    font-size: 0.85rem;
+    padding: 10px;
+    background: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.password-tooltip ul {
+    padding-left: 15px;
+    margin-bottom: 0;
+}
+
+.password-tooltip .highlight {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.error-text {
+    display: none;
+    font-size: 0.85rem;
+    color: #dc3545;
+    margin-top: 5px;
+}

@@ -5,55 +5,79 @@
 {% endblock %}
 
 {% block body %}
-<form method="post" class="form-control">
-    <div class="mb-3">
-        <label for="name" class="form-label">Имя</label>
-        <input type="text" name="name" placeholder="Введите имя" class="form-control" id="name">
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Пароль</label>
-        <input type="password" name="password" placeholder="Введите пароль" class="form-control" id="password" aria-describedby="passwordHelpInline">
-        <div id="passwordRules" class="alert alert-info mt-1" style="display: none; font-size: 0.85rem; padding: 0.5rem 0.75rem; background-color: white; border: 1px solid #ccc;">
-            <strong>Правила:</strong>
-            <ul>
-                <li>Минимум 8 символов</li>
-                <li>Максимум 40 символов</li>
-                <li>Хотя бы 1 заглавная буква</li>
-                <li>Хотя бы 1 прописная буква</li>
-                <li>Хотя бы 1 цифра</li>
-            </ul>
+<div class="registration-container d-flex justify-content-center">
+    <form method="post" class="registration-form p-4 shadow rounded" id="registrationForm" style="width: 350px;">
+        <div class="mb-3">
+            <input type="text" name="name" placeholder="Введите имя" class="form-control" id="name" required autocomplete="name">
         </div>
-    </div>
-    <div class="mb-3">
-        <label for="two_password" class="form-label">Повторите пароль</label>
-        <input type="password" name="two_password" placeholder="Повторите пароль" class="form-control" id="two_password">
-    </div>
-    {% if error %}
-        <div class="alert alert-danger" role="alert">
-            {{ error }}
+        <div class="mb-3">
+            <input type="password" name="password" placeholder="Введите пароль" class="form-control" id="password" required autocomplete="new-password">
+            <div id="passwordRules" class="password-tooltip">
+                <strong>Пароль должен содержать:</strong>
+                <ul>
+                    <li>Минимум <span class="highlight">8 символов</span></li>
+                    <li>Хотя бы <span class="highlight">1 заглавную букву</span></li>
+                    <li>Хотя бы <span class="highlight">1 цифру</span></li>
+                </ul>
+            </div>
         </div>
-    {% endif %}
-    <button class="btn btn-success" type="submit">Добавить</button>
-</form>
+        <div class="mb-3">
+            <input type="password" name="two_password" placeholder="Повторите пароль" class="form-control" id="two_password" required autocomplete="new-password">
+            <div id="passwordMatchError" class="error-text">Пароли не совпадают, попробуйте снова.</div>
+        </div>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" id="registerButton" disabled>Зарегистрироваться</button>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-secondary">Уже есть аккаунт? Войти</a>
+        </div>
+    </form>
+</div>
 
 <script>
     const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('two_password');
     const passwordRules = document.getElementById('passwordRules');
-    const twoPasswordInput = document.getElementById('two_password');
+    const passwordMatchError = document.getElementById('passwordMatchError');
+    const registerButton = document.getElementById('registerButton');
 
+    function validatePassword() {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+        const passwordCriteria = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-    passwordInput.addEventListener('focus', function() {
-        passwordRules.style.display = 'block';
-    });
+        let isValid = true;
 
+        passwordInput.addEventListener('focus', function() {
+            passwordRules.style.display = 'block';
+        });
 
-    passwordInput.addEventListener('blur', function() {
-        passwordRules.style.display = 'none';
-    });
+        passwordInput.addEventListener('blur', function() {
+            passwordRules.style.display = 'none';
+        });
 
+        confirmPasswordInput.addEventListener('focus', function() {
+            passwordRules.style.display = 'none';
+        });
 
-    twoPasswordInput.addEventListener('focus', function() {
-        passwordRules.style.display = 'none';
-    });
+        if (!passwordCriteria.test(password)) {
+            isValid = false;
+        }
+
+        if (password !== confirmPassword && confirmPassword.length > 0) {
+            passwordMatchError.style.display = "block";
+            isValid = false;
+        } else {
+            passwordMatchError.style.display = "none";
+        }
+
+        registerButton.disabled = !isValid;
+    }
+
+    passwordInput.addEventListener("input", validatePassword);
+    confirmPasswordInput.addEventListener("input", validatePassword);
 </script>
 {% endblock %}
