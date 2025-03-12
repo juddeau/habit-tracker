@@ -10,10 +10,13 @@
         <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Здравствуйте! Мы рады, что вы решили присоединиться!</h1>
         <p class="lead">Если вы зашли случайно и не знаете, что это за сервис, не спешите уходить, прочитайте во вкладке
             "О нас" всю информацию.</p>
+
+        {% if not user %}
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-            <a href="/register" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Зарегистрироваться</a>
-            <a href="/login" class="btn btn-outline-secondary btn-lg px-4">Войти</a>
+            <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Зарегистрироваться</a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-secondary btn-lg px-4">Войти</a>
         </div>
+        {% endif %}
     </div>
     <div class="hero-image col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
         <img src="{{ url_for('static', filename='img/derevo.webp') }}" alt="derevo">
