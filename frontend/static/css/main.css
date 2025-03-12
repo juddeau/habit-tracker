@@ -791,79 +791,21 @@ container, footer {
     background-color: #0056b3;
 }
 
-/* Анимации */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease-in-out;
-}
-
-.slide-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease-in-out;
-}
-
-/* Анимация кнопок при наведении */
-.cta-button, .benefit-card, .nav-link, .btn-primary, .btn-outline-secondary {
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Эффект свечения при наведении */
-.cta-button:hover,
-.btn-primary:hover,
-.btn-outline-secondary:hover,
-.nav-link:hover {
-    transform: scale(1.05); /* Легкое увеличение */
-    box-shadow: 0 0 15px rgba(0, 123, 255, 0.4); /* Свечение */
-}
-
-/* Анимация появления небольшого светового всплеска */
-.cta-button::after,
-.btn-primary::after,
-.btn-outline-secondary::after,
-.nav-link::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    opacity: 0;
-}
-
-/* Вспышка при нажатии */
-.cta-button:active::after,
-.btn-primary:active::after,
-.btn-outline-secondary:active::after,
-.nav-link:active::after {
-    width: 0;
-    height: 0;
-    opacity: 1;
-    transition: 0s;
-}
-
-/* Анимация карточек в секции "Как это работает?" */
-.benefit-card {
+/* Анимация только для кнопок в секции "Как это работает?" на странице О нас */
+.about-benefits .benefit-card {
     transition: all 0.3s ease-in-out;
     position: relative;
     overflow: hidden;
 }
 
 /* Эффект свечения и увеличения при наведении */
-.benefit-card:hover {
+.about-benefits .benefit-card:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
 }
 
 /* Анимация светового эффекта при наведении */
-.benefit-card::after {
+.about-benefits .benefit-card::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -878,7 +820,52 @@ container, footer {
 }
 
 /* Вспышка при нажатии */
-.benefit-card:active::after {
+.about-benefits .benefit-card:active::after {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Анимация для кнопки "Попробовать" */
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект увеличения и тени при наведении */
+.cta-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+}
+
+/* Анимация светового эффекта */
+.cta-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+/* Вспышка при нажатии */
+.cta-button:active::after {
     width: 0;
     height: 0;
     opacity: 1;
