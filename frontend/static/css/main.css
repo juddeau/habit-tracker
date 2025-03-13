@@ -145,6 +145,7 @@ container, footer {
     justify-content: space-between;
     gap: 20px;
     padding: 40px 0;
+
 }
 
 .hero-text {
@@ -1020,3 +1021,23 @@ container, footer {
     line-height: 1.6;
     font-weight: 400;
 }
+
+header {
+    position: sticky;
+    top: 0;
+    padding: 3px;
+    z-index: 1000;
+    background: white;
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 15px; /* Закругление углов */
+    margin: 10px; /* Отступы, чтобы шапка не прилипала к краям */
+    max-width: 98%; /* Чтобы не упиралась в края экрана */
+}
+
+
+
