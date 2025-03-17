@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("smoking-form");
     const input = document.getElementById("puffs");
     const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -12,36 +13,40 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Обновляем прогресс
-        let progress = Math.max(0, 100 - value * 2); // Пример: чем меньше сигарет, тем выше процент
-        progressFill.style.width = progress + "%";
-        progressFill.textContent = progress + "%";
-
-        alert("Данные сохранены! Продолжайте снижать курение.");
-    });
-
-    // График курения
-    const ctx = document.getElementById("smokingChart").getContext("2d");
-    new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-            datasets: [{
-                label: "Количество сигарет",
-                data: [10, 9, 8, 7, 6, 5, 4], // Пример данных
-                borderColor: "#2E8B57",
-                backgroundColor: "rgba(46, 139, 87, 0.2)",
-                fill: true,
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+        // Отправляем данные на сервер
+        fetch("/smoking", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "puffs=" + value  // Отправляем данные как "puffs=значение"
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
             }
-        }
+            return response.text(); // Или response.json(), если сервер возвращает JSON
+        })
+        .then(data => {
+            // Обрабатываем ответ сервера (data)
+            console.log("Server response:", data); // Выводим в консоль для отладки
+
+            // Обновляем прогресс
+            let progress = Math.max(0, 100 - value * 2); // Пример: чем меньше сигарет, тем выше процент
+            progressFill.style.width = progress + "%";
+            progressFill.textContent = progress + "%";
+            progressText.textContent = progress + "%";
+
+            alert("Данные сохранены! Продолжайте снижать курение.");
+
+            // Очищаем поле ввода
+            input.value = "";
+        })
+        .catch(error => {
+            console.error("There was a problem with the fetch operation:", error);
+            alert("Произошла ошибка при сохранении данных.");
+        });
     });
+
+    // ... (код для графика остается без изменений) ...
 });

@@ -1040,4 +1040,86 @@ header {
 }
 
 
+/* _variables.css (Убедитесь, что эти переменные определены) */
+:root {
+  --chart-color: #007bff;
+  --axis-color: #999;
+  --tooltip-background: #fff;
+  --tooltip-text-color: #333;
+  --primary-color-dark: #0056b3;  /* Добавьте, если не определена */
+  --border-radius: 8px; /* Добавьте, если не определена */
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Добавьте, если не определена */
+}
+
+/* === Стили для графика D3.js === */
+
+/* Общий контейнер графика */
+.chart-container {
+  width: 100%;
+  max-width: 600px; /* или больше, если требуется */
+  margin: 20px auto; /* Центрирование и отступы сверху и снизу */
+  padding: 10px;       /* Уменьшите отступы */
+  background-color: #fff;  /* Добавьте белый фон для лучшей видимости */
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: left;    /* Выравнивание текста слева */
+}
+
+/* Столбцы */
+#cigarette-chart rect {
+  fill: var(--chart-color);
+  transition: fill 0.3s ease, transform 0.3s ease; /* Добавлена анимация трансформации */
+}
+
+#cigarette-chart rect:hover {
+  fill: var(--primary-color-dark);
+  transform: translateY(-3px); /* Поднимаем столбец при наведении */
+  cursor: pointer; /* Изменяем курсор */
+}
+
+/* Оси */
+#cigarette-chart .axis path,
+#cigarette-chart .axis line {
+  fill: none;
+  stroke: var(--axis-color);
+  shape-rendering: crispEdges;
+}
+
+#cigarette-chart .axis text {
+  font-size: 12px;
+  fill: var(--axis-color);
+}
+
+/* Tooltip (всплывающая подсказка) */
+.tooltip {
+  position: absolute;
+  background: var(--tooltip-background);
+  color: var(--tooltip-text-color);
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10; /* Размещаем над графиком */
+}
+
+.tooltip.show {
+  opacity: 1;
+}
+
+/* Адаптивные стили */
+@media (max-width: 576px) {
+  .chart-container {
+    padding: 5px; /* Еще меньше отступов на очень маленьких экранах */
+  }
+
+  #cigarette-chart .axis text {
+    font-size: 10px; /* Уменьшаем размер шрифта на осях */
+  }
+}
+
+
+
 

@@ -7,8 +7,13 @@
     <h2 class="smoking-title">Отслеживание курения</h2>
     <p class="smoking-text">Каждый день записывайте количество сигарет, чтобы отслеживать прогресс.</p>
 
+    <!-- Сообщение об ошибке (если есть) -->
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
     <!-- Форма для ввода данных -->
-    <form id="smoking-form" class="smoking-form">
+    <form id="smoking-form" class="smoking-form" method="post">
         <div class="input-group">
             <label for="puffs" class="form-label">Количество сигарет:</label>
             <input type="number" id="puffs" name="puffs" class="form-control" min="0" required>
@@ -16,14 +21,89 @@
         <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>
 
+    <!-- Прогресс -->
+    <div class="progress-container">
+        <div class="progress-label">Прогресс: <span id="progressText">0%</span></div>
+        <div class="progress">
+            <div id="progressFill" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+
     <!-- График -->
     <h3 class="smoking-chart-title">График курения</h3>
     <div class="chart-container">
-        <canvas id="smokingChart"></canvas>
+        <svg id="cigarette-chart" width="600" height="400"></svg>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ url_for('static', filename='js/smoking.js') }}"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    // Предполагаемые данные (замените на данные из вашей базы данных)
+    const data = [
+      { day: "Пн", cigarettes: 5 },
+      { day: "Вт", cigarettes: 8 },
+      { day: "Ср", cigarettes: 6 },
+      { day: "Чт", cigarettes: 9 },
+      { day: "Пт", cigarettes: 7 },
+      { day: "Сб", cigarettes: 4 },
+      { day: "Вс", cigarettes: 3 },
+    ];
 
+    // Настройка графика
+    const svg = d3.select("#cigarette-chart");
+    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    const width = +svg.attr("width") - margin.left - margin.right;
+    const height = +svg.attr("height") - margin.top - margin.bottom;
+
+    // Создание группы для графика (чтобы применить отступы)
+    const g = svg.append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Шкалы
+    const x = d3.scaleBand()
+      .rangeRound([0, width])
+      .paddingInner(0.1);  // Отступ между столбцами
+    const y = d3.scaleLinear()
+      .rangeRound([height, 0]);
+
+    // Ось X
+    const xAxis = d3.axisBottom(x);
+
+    // Ось Y
+    const yAxis = d3.axisLeft(y)
+      .ticks(10); // Количество тиков на оси Y
+
+    // Обновление шкал на основе данных
+    x.domain(data.map(d => d.day));
+    y.domain([0, d3.max(data, d => d.cigarettes)]);
+
+    // Добавление столбцов
+    g.selectAll(".bar")
+      .data(data)
+      .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", d => x(d.day))
+      .attr("y", d => y(d.cigarettes))
+      .attr("width", x.bandwidth())
+      .attr("height", d => height - y(d.cigarettes))
+      .on("mouseover", (event, d) => {  // Интерактивность: показ информации при наведении
+        // Здесь можно отобразить дополнительную информацию (например, количество сигарет)
+        // Можно добавить tooltip (всплывающую подсказку)
+        console.log(`День: ${d.day}, Сигарет: ${d.cigarettes}`);
+      })
+      .on("mouseout", () => {
+          // Скрыть tooltip
+      });
+
+    // Добавление оси X
+    g.append("g")
+      .attr("class", "axis")
+      .attr("transform", `translate(0,${height})`)
+      .call(xAxis);
+
+    // Добавление оси Y
+    g.append("g")
+      .attr("class", "axis")
+      .call(yAxis);
+</script>
 {% endblock %}
