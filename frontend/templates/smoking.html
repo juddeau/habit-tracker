@@ -30,80 +30,24 @@
     </div>
 
     <!-- График -->
-    <h3 class="smoking-chart-title">График курения</h3>
-    <div class="chart-container">
-        <svg id="cigarette-chart" width="600" height="400"></svg>
-    </div>
-</div>
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script>
-    // Предполагаемые данные (замените на данные из вашей базы данных)
-    const data = [
-      { day: "Пн", cigarettes: 5 },
-      { day: "Вт", cigarettes: 8 },
-      { day: "Ср", cigarettes: 6 },
-      { day: "Чт", cigarettes: 9 },
-      { day: "Пт", cigarettes: 7 },
-      { day: "Сб", cigarettes: 4 },
-      { day: "Вс", cigarettes: 3 },
-    ];
-
-    // Настройка графика
-    const svg = d3.select("#cigarette-chart");
-    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-    const width = +svg.attr("width") - margin.left - margin.right;
-    const height = +svg.attr("height") - margin.top - margin.bottom;
-
-    // Создание группы для графика (чтобы применить отступы)
-    const g = svg.append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
-
-    // Шкалы
-    const x = d3.scaleBand()
-      .rangeRound([0, width])
-      .paddingInner(0.1);  // Отступ между столбцами
-    const y = d3.scaleLinear()
-      .rangeRound([height, 0]);
-
-    // Ось X
-    const xAxis = d3.axisBottom(x);
-
-    // Ось Y
-    const yAxis = d3.axisLeft(y)
-      .ticks(10); // Количество тиков на оси Y
-
-    // Обновление шкал на основе данных
-    x.domain(data.map(d => d.day));
-    y.domain([0, d3.max(data, d => d.cigarettes)]);
-
-    // Добавление столбцов
-    g.selectAll(".bar")
-      .data(data)
-      .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", d => x(d.day))
-      .attr("y", d => y(d.cigarettes))
-      .attr("width", x.bandwidth())
-      .attr("height", d => height - y(d.cigarettes))
-      .on("mouseover", (event, d) => {  // Интерактивность: показ информации при наведении
-        // Здесь можно отобразить дополнительную информацию (например, количество сигарет)
-        // Можно добавить tooltip (всплывающую подсказку)
-        console.log(`День: ${d.day}, Сигарет: ${d.cigarettes}`);
-      })
-      .on("mouseout", () => {
-          // Скрыть tooltip
-      });
-
-    // Добавление оси X
-    g.append("g")
-      .attr("class", "axis")
-      .attr("transform", `translate(0,${height})`)
-      .call(xAxis);
-
-    // Добавление оси Y
-    g.append("g")
-      .attr("class", "axis")
-      .call(yAxis);
-</script>
+<h3 class="mt-4">Ваша статистика</h3>
+<table class="table table-bordered mt-2">
+    <thead>
+        <tr>
+            <th>Показатель</th>
+            <th>Значение</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Сигарет сегодня</td>
+            <td>{{ smoked_today }}</td>
+        </tr>
+        <tr>
+            <td>Сигарет за месяц</td>
+            <td>{{ monthly_cigarettes }}</td>
+        </tr>
+    </tbody>
+</table>
 {% endblock %}

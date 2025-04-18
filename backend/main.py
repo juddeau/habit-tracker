@@ -162,18 +162,19 @@ def smoking():
 
 def get_smoking_data(user):
     if user:
-        # Количество сигарет до цели
+        now = datetime.utcnow()
+        smoked_today = 0
+        if user.last_smoked and user.last_smoked.date() == now.date():
+            smoked_today = user.cigarettes
+
         cigarettes_to_target = max(0, user.cigarettes - user.target_cigarettes)
-
-        # Расчет среднего количества сигарет (упрощенный пример за последние 7 дней)
-        # В реальном проекте потребуется хранить историю курения
-        average_cigarettes = user.cigarettes  # Пока просто текущее значение
-
-        # Процент прогресса (чем меньше сигарет, тем больше прогресс)
-        progress = max(0, min(100, 100 - (user.cigarettes / 2)))  # Пример
+        average_cigarettes = user.cigarettes
+        progress = max(0, min(100, 100 - (user.cigarettes / 2)))
 
         return {
             "current_cigarettes": user.cigarettes,
+            "smoked_today": smoked_today,
+            "monthly_cigarettes": user.monthly_cigarettes,
             "average_cigarettes": average_cigarettes,
             "target_cigarettes": user.target_cigarettes,
             "cigarettes_to_target": cigarettes_to_target,
