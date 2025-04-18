@@ -187,6 +187,7 @@ def get_smoking_data(user):
 
 
 
+
 @app.route('/upgrade')
 def upgrade():
     return render_template("UpGrade.html", user=session.get("user"))

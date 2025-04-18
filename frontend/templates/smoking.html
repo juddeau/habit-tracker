@@ -7,47 +7,72 @@
     <h2 class="smoking-title">Отслеживание курения</h2>
     <p class="smoking-text">Каждый день записывайте количество сигарет, чтобы отслеживать прогресс.</p>
 
-    <!-- Сообщение об ошибке (если есть) -->
     {% if error %}
         <div class="alert alert-danger">{{ error }}</div>
     {% endif %}
 
     <!-- Форма для ввода данных -->
     <form id="smoking-form" class="smoking-form" method="post">
-        <div class="input-group">
-            <label for="puffs" class="form-label">Количество сигарет:</label>
-            <input type="number" id="puffs" name="puffs" class="form-control" min="0" required>
+        <div class="input-group mb-3 justify-content-center">
+            <label for="puffs" class="form-label visually-hidden">Количество сигарет:</label>
+            <input type="number" id="puffs" name="puffs" class="form-control w-50 text-center" min="0" required>
+            <button type="submit" id="submit-button" class="btn btn-primary ms-2">Сохранить</button>
         </div>
-        <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>
 
     <!-- Прогресс -->
     <div class="progress-container">
-        <div class="progress-label">Прогресс: <span id="progressText">0%</span></div>
+        <div class="progress-label">Прогресс: <span id="progressText">{{ progress }}%</span></div>
         <div class="progress">
-            <div id="progressFill" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            <div id="progressFill" class="progress-bar" role="progressbar" style="width: {{ progress }}%;" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">{{ progress }}%</div>
         </div>
     </div>
 
-    <!-- График -->
+    <!-- Таблица статистики -->
+    <h3 class="mt-4 mb-3 text-center">📊 Ваша статистика</h3>
+    <div class="table-responsive">
+        <table class="table table-hover table-borderless align-middle text-center shadow-sm rounded">
+            <thead class="table-light">
+                <tr>
+                    <th class="fs-5">Показатель</th>
+                    <th class="fs-5">Значение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="fw-semibold">Сигарет сегодня</td>
+                    <td class="text-primary fs-5">{{ smoked_today }}</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Сигарет за месяц</td>
+                    <td class="text-success fs-5">{{ monthly_cigarettes }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<h3 class="mt-4">Ваша статистика</h3>
-<table class="table table-bordered mt-2">
-    <thead>
-        <tr>
-            <th>Показатель</th>
-            <th>Значение</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Сигарет сегодня</td>
-            <td>{{ smoked_today }}</td>
-        </tr>
-        <tr>
-            <td>Сигарет за месяц</td>
-            <td>{{ monthly_cigarettes }}</td>
-        </tr>
-    </tbody>
-</table>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const input = document.getElementById("puffs");
+        const button = document.getElementById("submit-button");
+
+        input.addEventListener("input", () => {
+            const value = parseInt(input.value);
+
+            if (isNaN(value) || value < 0) {
+                button.style.backgroundColor = "";
+                return;
+            }
+
+            if (value <= 5) {
+                button.style.backgroundColor = "#28a745"; // зелёный
+            } else if (value <= 10) {
+                button.style.backgroundColor = "#ffc107"; // жёлтый
+            } else {
+                button.style.backgroundColor = "#dc3545"; // красный
+            }
+        });
+    });
+</script>
 {% endblock %}
